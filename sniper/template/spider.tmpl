@@ -1,0 +1,40 @@
+from pathlib import Path
+from sniper import Crawl
+from sniper import get_params
+from settings import *
+
+
+class ${ProjectName}Spider(Crawl):
+    spider_name = '$project_name'
+
+    def __init__(self, **kwargs):
+        """
+        配置爬虫所需参数：
+        name='XXXXXXXX' # csv文件名， 必要参数,
+        CACHE_PATH=CACHE_PATH # 缓存路径, 必要参数,
+        ROOT_PATH=ROOT_PATH # 项目根目录, 必要参数,
+        """
+        super().__init__(**kwargs)
+
+    def start_request(self):
+        """
+        请替换自己项目的URL
+        :return: Iterator
+        """
+        url = 'https://$url'
+        yield url, COOKIES, HEADERS, PARAMS, JSON_DATA
+
+    def html_pars(self, response=None) -> list:
+        """
+        返回列表形式：[{str: str},{str: str}]
+        :param response: response
+        :return: list
+        """
+        data = []
+        return data
+
+if __name__ == '__main__':
+    ${ProjectName}Spider(name='XXXXXX',
+                         BASE=base,
+                         CACHE_PATH=CACHE_PATH,
+                         ROOT_PATH=ROOT_PATH).save()

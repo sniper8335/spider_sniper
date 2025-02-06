@@ -1,0 +1,14 @@
+from sniper import base
+from sqlalchemy import Column, Integer, String, ForeignKey, Text, BigInteger, DATETIME, Float
+
+
+class ${ProjectName}Model(base.Base):
+    """
+    请按照爬取字段设置模型字段
+    """
+    __tablename__ = '$project_name'
+    id = Column(Integer, primary_key=True)
+
+
+if __name__ == '__main__':
+    ${ProjectName}Model.metadata.create_all(base.base_engin)

@@ -1,0 +1,38 @@
+import os
+from pathlib import Path
+from sniper.database.model import BaseConfig
+
+# 设置cookies
+COOKIES = {}
+
+# 设置headers
+HEADERS = {}
+
+# 设置get请求的params参数
+PARAMS = {}
+
+# 设置post请求的JSON_DATA参数
+JSON_DATA = {}
+
+# 用户并发数量设置
+CUSTOMER_CURRENT = 32
+
+# 设置缓存路径
+ROOT_PATH = Path(__file__).parent.parent
+CACHE_PATH = ROOT_PATH / 'cache'
+if not CACHE_PATH.exists():
+    CACHE_PATH.mkdir()
+    os.system(f'idea . --add-excluded {CACHE_PATH}')
+
+# 设置csv路径
+CSV_PATH = ROOT_PATH / 'csv'
+if not CSV_PATH.exists():
+    CSV_PATH.mkdir()
+    CSV_PATH = str(CSV_PATH.resolve())
+
+# 数据库配置项
+DATABASE = {
+    'sqlite': 'data.db'
+}
+
+base = BaseConfig(DATABASE=DATABASE)
